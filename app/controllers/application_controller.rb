@@ -4,29 +4,31 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
   end
 
-  #index
+  #index page
   get '/recipes' do
+    #controller action (index action) that displays all the recipes in the database
     @recipes = Recipe.all
-    erb :index #set up a controller action that will render a form to create a new recipe
+    erb :index
   end
 
 #new/create
   get '/recipes/new' do
-    #create a controller action that uses RESTful routes to display a single recipe.
+    #set up a controller action that will render a form to create a new recipe
     erb :new
   end
 
+
   post '/recipes' do
-    #controller action that uses RESTful routes and renders a form to edit a single recipe.
+
     @recipe = Recipe.create(name: params[:name], ingredients: params[:ingredients], cook_time: params[:cook_time])
-    #This controller action should update the entry in the database with the changes, and
-    #then redirect to the recipe show page
+
     redirect "/recipes/#{@recipe.id}"
   end
 
   #show
   get '/recipes/:id' do
-    #controller action (index action) that displays all the recipes in the database
+    #create a controller action that uses RESTful routes to display a single recipe.
+
     @recipe = Recipe.find_by_id(params[:id])
     erb :show
 
@@ -34,7 +36,10 @@ class ApplicationController < Sinatra::Base
 
   #edit
   get '/recipes/:id/edit' do
+    #controller action that uses RESTful routes and renders a form to edit a single recipe.
     @recipe = Recipe.find_by_id(params[:id])
+    #This controller action should update the entry in the database with the changes, and
+    #then redirect to the recipe show page
     erb :edit
   end
 
