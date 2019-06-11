@@ -1,13 +1,25 @@
-<h1>Recipe</h1>
-<br>
-<h3>Recipe Name: <%= @recipe.name %></h3>
-<br>
-<p>Recipe Ingredients: <%= @recipe.ingredients %></p>
-<br>
-<p>Recipe Cook Time <%= @recipe.cook_time %></p>
-<br>
+<!--<h1>Recipe</h1>-->
+<!--<br>-->
+<!--<h3>Recipe Name: <%= @recipe.name %></h3>-->
+<!--<br>-->
+<!--<p>Recipe Ingredients: <%= @recipe.ingredients %></p>-->
+<!--<br>-->
+<!--<p>Recipe Cook Time: <%= @recipe.cook_time %></p>-->
+<!--<br>-->
 
-<form method="POST" action="/recipes/<%= @recipe.id %>">
-  <input id="hidden" type="hidden" name="_method" value="delete">
-  <input type="submit" value="delete">
-</form> 
+<!--<form method="POST" action="/recipes/<%= @recipe.id %>">-->
+<!--  <input id="hidden" type="hidden" name="_method" value="delete">-->
+<!--  <input type="submit" value="delete">-->
+<!--</form> -->
+
+<h1>Recipe Detail</h1>
+<h3>Name: <%= @recipe.name %></h3>
+<ul>
+  <li>Ingredients: <%= @recipe.ingredients %></li>
+  <li>Cook Time: <%= @recipe.cook_time %></li>
+  <li><a href='/recipes'>Click here to return to the recipe list.</a></li>
+  <form action='/recipes/<%= @recipe.id %>' method='POST'>
+  <input type='hidden' id='hidden' name ='_method' value='DELETE'>
+  <li><input id='delete' type='submit' name='delete' value='Delete Recipe'><li>
+  </form>
+</ul>
