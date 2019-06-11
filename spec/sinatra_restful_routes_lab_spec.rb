@@ -181,6 +181,7 @@ describe "Recipe App" do
     end
 
     it "deletes a recipe" do
+       
       expect(Recipe.find_by_id(@cookie.id)).to eq(nil)
     end
 
