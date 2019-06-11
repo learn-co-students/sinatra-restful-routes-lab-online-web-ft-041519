@@ -1,0 +1,9 @@
+<form method=post action='/recipes/new'> 
+  <% Recipe.all.each do |x| %>
+  <%= x.name %>
+  <% end %>
+  
+  <% Recipe.all.each do |x| %>
+  <a href=<%="/recipes/#{x.id}" %>> Recipe <%= x.id %> </a>
+  <% end %>
+</form>
